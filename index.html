@@ -2,19 +2,32 @@
 <html>
 <head>
 <title>WYSIWIG - SKJ</title>
-<script type="text/javascript" src="wysiwig/wysiwig.js"></script>
+<script type="text/javascript" src="wysiwig.js"></script>
 </head>
 <body onLoad="frameon();">
 
 <h1 style="text-align:center;">WYSIWIG</h1>
 <p style="text-align:center;">This is an internship assessment project.</p>
+
 <p style="color:blue;text-align:center;">WYSIWIG Editor<br><br>
 
-<textarea style="display:none;" name="myTextArea" id="myTextArea" cols="100" rows="14"></textarea>
-<iframe name="textField" id="textField" style="border:#000000 1px solid; width:600px; height:300px;></iframe>
+<div id="wysiwyg_cp" style="padding:8px; width:700px;">
+  <input type="button" onClick="iBold()" value="Bold"> 
+  <input type="button" onClick="iUnderline()" value="Underline">
+  <input type="button" onClick="iItalic()" value="Italics">
+  <input type="button" onClick="iFontSize()" value="Text Size">
+  <input type="button" onClick="iFontColor()" value="Text Color">
+  <input type="button" onClick="iLink()" value="Hyperlink">
+  <input type="button" onClick="iImage()" value="Image">
+</div>
+<textarea style="display:none;text-align:center;" name="myTextArea" id="myTextArea" cols="100" rows="14"></textarea>
+<iframe name="textField" id="textField" style="text-align:center;border:#000000 1px solid; width:600px; height:300px;></iframe>
 
 
-</p>
+<br><br></p>
+
+<input name="myBtn" type="button" value="Save Doc" onClick="javascript:submit_form();"/>
+
 
 <p style="text-align:right;">By Sania K. Jamil(SKJ)</p>
 </body>
