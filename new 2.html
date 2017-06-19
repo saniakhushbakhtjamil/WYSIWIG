@@ -1,0 +1,91 @@
+<html>
+<head>
+</head>
+<body onLoad="iFrameOn();">
+<h1 style="text-align:center;color:blue;">WYSIWIG</h1>
+<p style="text-align:center;">Made for Internship Assessment - by SKJ</p>
+
+<p>Enter Name of File: <input name="title" id="title" type="text" size="80" maxlength="80" /></p>
+<p>Editor:<br>
+<div id="wysiwyg_cp" style="padding:8px; width:700px;">
+  <input type="button" onClick="iBold()" value="Bold"> 
+  <input type="button" onClick="iUnderline()" value="Underline">
+  <input type="button" onClick="iItalic()" value="Italic">
+  <input type="button" onClick="iIndent" value="Indent">
+  <input type="button" onClick="iFontType()" value="Font Name">
+  <input type="button" onClick="iFontSize()" value="Text Size">
+  <input type="button" onClick="iForeColor()" value="Text Color">
+  <input type="button" onClick="iBackColor()" value="Highlight">
+  <input type="button" onClick="iLink()" value="Link">
+  <input type="button" onClick="iImage()" value="Image">
+</div>
+<textarea style="display:none;" name="myTextArea" id="myTextArea" cols="100" rows="14"></textarea>
+<iframe name="richTextField" id="richTextField" style="border:#000000 1px solid; width:700px; height:300px;"></iframe>
+</p>
+
+<script>
+
+function iFrameOn(){
+	richTextField.document.designMode = 'On';
+}
+function iBold(){
+	richTextField.document.execCommand('bold',false,null); 
+}
+function iUnderline(){
+	richTextField.document.execCommand('underline',false,null);
+}
+function iItalic(){
+	richTextField.document.execCommand('italic',false,null); 
+}
+
+function iFontSizeArg(arg){
+  richTextField.document.execCommand('FontSize',false,arg);
+  
+}
+
+
+
+function iForeColor(){
+	var color = prompt('Define a basic color or apply a hexadecimal color code for advanced colors:', '');
+	richTextField.document.execCommand('ForeColor',false,color);
+	
+	
+	
+}
+function iFontSize(){
+	var size = prompt('Size from 1 onwards', '');
+	richTextField.document.execCommand('FontSize',false,size);
+	
+	
+	
+}
+function iBackColor(){
+	var bcolor = prompt('Define a basic color or apply a hexadecimal color code for advanced colors:', '');
+	richTextField.document.execCommand('BackColor',false,bcolor);
+}	
+function iFontType(){
+	var type = prompt('Select Type by typing the name. few are 1.Arial, 2. Times New Roman, 3. Calibri etc.','');
+	richTextField.document.execCommand('fontName',false,type);	
+
+
+	
+	
+}
+function iLink(){
+	var linkURL = prompt("Enter the URL for this link:", "http://"); 
+	richTextField.document.execCommand("CreateLink", false, linkURL);
+}
+function iImage(){
+	var imgSrc = prompt('Enter image location', '');
+    if(imgSrc != null){
+        richTextField.document.execCommand('insertimage', false, imgSrc); 
+    }
+}
+function submit_form(){
+	var theForm = document.getElementById("myform");
+	theForm.elements["myTextArea"].value = window.frames['richTextField'].document.body.innerHTML;
+	theForm.submit();
+}
+</script>
+</body>
+</html>
